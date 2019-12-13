@@ -61,7 +61,7 @@ public class NewsServiceImpl implements NewsService {
         List<Long> list=new ArrayList<>();
         Example example = new Example(CmsArticle.class);
         example.createCriteria().andEqualTo("topicId",topicId).andEqualTo("deleted",0).andEqualTo("status",0);
-
+        example.orderBy("createTime").desc();
         List<CmsArticle> cmsArticles = cmsArticleMapper.selectByExample(example);
         for (CmsArticle Article :cmsArticles){
             list.add(Article.getId());
