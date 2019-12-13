@@ -21,13 +21,15 @@ public class CmsArticleController {
     @ApiOperation(value = "分页查询文章", notes = "传入专题id及分页参数")
     @GetMapping("/list")
     public CommonResult<List<CmsArticle>> listArticle(Long topicId) {
-        List<CmsArticle> cmsArticles = null;
+
         try {
-            cmsArticles = cmsArticleService.selectArticle(topicId);
+            List<CmsArticle> cmsArticles = cmsArticleService.selectArticle(topicId);
+            return CommonResult.success(cmsArticles);
         } catch (Exception e) {
             e.printStackTrace();
+            return CommonResult.fail(ResponseCode.FAILED);
         }
-        return CommonResult.success(cmsArticles);
+
     }
 
 }

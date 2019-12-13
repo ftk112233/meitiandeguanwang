@@ -12,5 +12,5 @@ public interface NewsService {
     CommonPage<CmsArticle> select(Integer page, Integer pageSize, Long topicId);
 
 
-    CmsArticle findById(Long id);
+    List<CmsArticle> findById(Long id,Long topicId);
 }

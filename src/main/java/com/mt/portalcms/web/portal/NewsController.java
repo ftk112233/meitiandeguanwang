@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Api(tags = "门户新闻接口")
 @RestController
 @RequestMapping("/new")
@@ -24,7 +26,7 @@ public class NewsController {
         return CommonResult.success(newsService.select(page, pageSize, topicId));
     }
     @GetMapping("findById")
-    public CommonResult<CmsArticle> findById(@RequestParam("id") Long id){
-        return CommonResult.success(newsService.findById(id));
+    public CommonResult<List<CmsArticle>> findById(@RequestParam("id") Long id, @RequestParam("topicId") Long topicId){
+        return CommonResult.success(newsService.findById(id,topicId));
     }
 }
