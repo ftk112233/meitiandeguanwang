@@ -72,7 +72,7 @@ public class CmsArticleServiceImpl implements ICmsArticleService {
         for (CmsArticle cmsArticle : cmsArticles) {
             CmsArticleContent cmsArticleContent = new CmsArticleContent();
             cmsArticleContent.setArticleId(cmsArticle.getId());
-            CmsArticleContent cmsArticleContent1 = cmsArticleContentMapper.select(cmsArticleContent).get(0);
+            CmsArticleContent cmsArticleContent1 = cmsArticleContentMapper.selectOne(cmsArticleContent);
             cmsArticle.setCmsArticleContents(cmsArticleContent1);
         }
         return cmsArticles;
