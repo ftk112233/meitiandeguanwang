@@ -1,0 +1,38 @@
+server:
+  port: 8080
+  tomcat:
+    max-swallow-size: -1
+
+# ϵͳ�������
+system:
+  token:
+    # redis�д��token��ǰ׺
+    prefix: >
+      token:
+    # redisĬ�Ϲ���ʱ�� 30����
+    expire: 1800
+  upload:
+    # �ļ��ϴ�·��
+    filepath: D:/little/upload/
+    # ͼƬ�ϴ�·��
+    imagepath: D:/little/images/
+
+# spring�������
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 20MB
+      resolve-lazily: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  profiles:
+    active: dev
+lettuce:
+  level:
+    com:
+      mt:
+        portalcms:
+          mapper: debug
+
