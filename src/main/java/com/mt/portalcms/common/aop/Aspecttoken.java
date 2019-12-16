@@ -1,7 +1,7 @@
 package com.mt.portalcms.common.aop;
 
 import com.auth0.jwt.JWT;
-import com.mt.portalcms.common.exception.LoginException;
+import com.mt.portalcms.common.exception.GlobalException;
 import com.mt.portalcms.common.util.RedisUtil;
 import com.mt.portalcms.mapper.UmsUserMapper;
 import com.mt.portalcms.pojo.UmsUser;
@@ -42,13 +42,13 @@ public class Aspecttoken {
         //获取前台请求参数
         String token = request.getHeader("token");// 从 http 请求头中取出 token
         if (token == null || !token.equals(redis.get("token"))) {
-            throw new LoginException(-1, "您没有登陆，请先登陆");
+            throw new GlobalException("您没有登陆，请先登陆",401);
         } else {
             String userid = JWT.decode(token).getAudience().get(0);
             UmsUser umsUser = new UmsUser();
             umsUser.setId(Long.parseLong(userid));
             if (userMapper.selectOne(umsUser) == null) {
-                throw new LoginException(-1, "您没有登陆，请先登陆");
+                throw new GlobalException("您没有登陆，请先登陆",401);
             }
             return true;
         }

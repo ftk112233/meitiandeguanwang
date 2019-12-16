@@ -33,7 +33,7 @@ public class GlobalExceptionHandle {
             return CommonResult.fail(ResponseCode.FAILED.getCode(), e.getMessage());
         } else {
             LOGGER.error("系统异常", e);
-            return CommonResult.fail(ResponseCode.FAILED.getCode(), "系统异常，请重新登陆");
+            return CommonResult.fail(ResponseCode.FAILED.getCode(), "系统异常，操作失败");
         }
 
     }
