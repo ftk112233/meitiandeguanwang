@@ -15,9 +15,9 @@ import java.util.List;
 @RequestMapping("/item")
 @Api(tags = "门户项目信息接口")
 public class ItemsController {
+
     @Autowired
     ItemsService itemsService;
-
 
     @GetMapping("/select")
     public CommonResult<List<Items>> select() {
